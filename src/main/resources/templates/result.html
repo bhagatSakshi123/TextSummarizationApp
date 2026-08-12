@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Summary Result</title>
+
+    <!-- Bootstrap -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+
+    <!-- Our CSS -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark mb-5">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold" href="/">
+            AI Summarizer
+        </a>
+
+        <div>
+
+            <a href="/new" class="btn btn-outline-light me-2">
+                New Summary
+            </a>
+
+            <a href="/history" class="btn btn-light">
+                History
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+<div class="container py-5">
+
+    <!-- Heading -->
+    <div class="text-center mb-5">
+
+        <h1 class="fw-bold">
+            Summary Result
+        </h1>
+
+        <p class="text-muted">
+            Your AI-generated abstractive summary
+        </p>
+
+    </div>
+
+
+    <!-- Original Text -->
+    <div class="card shadow-sm border-0 mb-4">
+
+        <div class="card-body p-4">
+
+            <h4 class="fw-bold mb-3">
+                Original Text
+            </h4>
+
+            <div class="original-text">
+                <p th:text="${summary.originalText}"></p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Generated Summary -->
+    <div class="card shadow-lg border-0 mb-4">
+
+        <div class="card-body p-4">
+
+            <h4 class="fw-bold mb-3">
+                AI Generated Summary
+            </h4>
+
+            <div class="row text-center mt-4">
+
+                <div class="col-md-4">
+                    <div class="p-3 bg-light rounded">
+                        <h6 class="text-muted">Original Length</h6>
+
+                        <h4 th:text="${summary.originalLength}">
+                            0
+                        </h4>
+
+                        <small>characters</small>
+                    </div>
+                </div>
+
+
+                <div class="col-md-4">
+                    <div class="p-3 bg-light rounded">
+                        <h6 class="text-muted">Summary Length</h6>
+
+                        <h4 th:text="${summary.summaryLength}">
+                            0
+                        </h4>
+
+                        <small>characters</small>
+                    </div>
+                </div>
+
+
+                <div class="col-md-4">
+                    <div class="p-3 bg-light rounded">
+                        <h6 class="text-muted">Text Reduction</h6>
+
+                        <h4>
+                <span
+                        th:text="${#numbers.formatDecimal(summary.compressionPercentage, 1, 2)}">
+                    0
+                </span>%
+                        </h4>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="summary-box">
+
+                <p id="generatedSummary"
+                   th:text="${summary.generatedSummary}">
+                </p>
+
+            </div>
+
+            <div class="text-end mt-3">
+
+                <button
+                        type="button"
+                        class="btn btn-outline-primary"
+                        onclick="copySummary()">
+
+                    📋 Copy Summary
+
+                </button>
+
+                <span id="copyMessage"
+                      class="text-success ms-2"
+                      style="display: none;">
+
+        Copied!
+
+    </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Buttons -->
+    <div class="text-center">
+
+        <a href="/new" class="btn btn-outline-light me-2">
+            New Summary
+        </a>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    function copySummary() {
+
+        const summary =
+            document.getElementById("generatedSummary").innerText;
+
+        navigator.clipboard.writeText(summary)
+            .then(function () {
+
+                const message =
+                    document.getElementById("copyMessage");
+
+                message.style.display = "inline";
+
+                setTimeout(function () {
+                    message.style.display = "none";
+                }, 2000);
+
+            })
+            .catch(function () {
+
+                alert("Unable to copy summary.");
+
+            });
+    }
+
+</script>
+
+</body>
+
+</html>

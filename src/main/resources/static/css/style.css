@@ -1,0 +1,53 @@
+body {
+    background: #f5f7fb;
+    font-family: Arial, sans-serif;
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+/* Main heading */
+h1 {
+    color: #212529;
+}
+
+/* Main card */
+.card {
+    border-radius: 18px;
+}
+
+/* Text area */
+textarea {
+    resize: vertical;
+    min-height: 280px;
+    border-radius: 12px !important;
+    padding: 15px !important;
+    font-size: 16px !important;
+}
+
+textarea:focus {
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15) !important;
+}
+
+/* Summarize button */
+.btn-primary {
+    border-radius: 10px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+}
+
