@@ -44,7 +44,7 @@ The processed text is then analyzed to identify important information and genera
 - Text Summarization
 
 ## Project Structure
-
+```
 TextSummarizationApp
 │
 ├── src
@@ -61,7 +61,7 @@ TextSummarizationApp
 ├── mvnw.cmd
 ├── pom.xml
 └── README.md
-
+```
 ## Application Workflow
 
 1. User enters the text that needs to be summarized.
