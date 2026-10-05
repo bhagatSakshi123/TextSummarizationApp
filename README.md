@@ -71,6 +71,20 @@ TextSummarizationApp
 5. A concise summary is generated.
 6. The generated summary is displayed to the user.
 
+## 📸 Application Screenshots
+
+### Home Page
+![Home Page](home.png)
+
+### New Summary
+![New Summary](new-summary.png)
+
+### Summary Result
+![Summary Result](result.png)
+
+### Summary History
+![Summary History](history.png)
+
 ## Project Objective
 
 The main objective of this project is to demonstrate the practical application of Natural Language Processing for reducing large textual content into a concise and meaningful summary.
